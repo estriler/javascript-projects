@@ -39,3 +39,4 @@ console.log(daysToMoon);
 // Print the results of the trip to the moon below
 
 console.log(name , "will take" , daysToMoon , "to reach the Moon.");
+console.log(2 ** 2 ** 3 * 3);
