@@ -9,6 +9,21 @@
 // 5. Use console.log(reverseCharacters(myVariableName)); to call the function and verify that it correctly reverses the characters in the string.
 // 6. Optional: Use method chaining to reduce the lines of code within the function.
 
+function reverseCharacters(str){
+    let revStr = "";
+    if (typeof str === "string"){
+        revStr = str.split("").reverse().join("");
+    }else if(typeof str === "number"){
+        revStr = Number(String(str).split("").reverse().join(""));
+    }
+
+
+    return revStr;
+}
+
+// console.log(reverseCharacters(123456));
+
+
 // Part Two: Reverse Digits
 
 // 1. Add an if statement to reverseCharacters to check the typeof the parameter.
@@ -26,9 +41,21 @@
 // 5. Return the final, reversed array.
 // 6. Be sure to print the results from each test case in order to verify your code.
 
+function completeReversal(array){
+    let reversedArray = [];
+    for(let i = 0; i < array.length; i++){
+        reversedArray.unshift(reverseCharacters(array[i]));
+    }
+    return reversedArray;
+}
+
 let arrayTest1 = ['apple', 'potato', 'Capitalized Words'];
 let arrayTest2 = [123, 8897, 42, 1168, 8675309];
 let arrayTest3 = ['hello', 'world', 123, 'orange'];
+
+console.log(completeReversal(arrayTest1));
+console.log(completeReversal(arrayTest2));
+console.log(completeReversal(arrayTest3));
 
 // Bonus Missions
 
@@ -36,6 +63,22 @@ let arrayTest3 = ['hello', 'world', 123, 'orange'];
 // 2. Retrieve only the last character from strings with lengths of 3 or less.
 // 3. Retrieve only the first 3 characters from strings with lengths larger than 3.
 // 4. Use a template literal to return the phrase We put the '___' in '___'. Fill the first blank with the modified string, and fill the second blank with the original string.
+
+function funPhrase(str){
+    let char = "";
+
+    if(str.length <= 3){
+        char = str.slice(str.length - 1)
+    }else {
+        char = str.slice(0, 3);
+    }
+
+    return `We put the '${char}' in '${str}'!`;
+
+    // return char;
+}
+
+console.log(funPhrase("fun"));
 
 // Test Function
 
@@ -49,3 +92,17 @@ let arrayTest3 = ['hello', 'world', 123, 'orange'];
 // 3. Call your area function by passing in two arguments - the length and width.
 // 4. If only one argument is passed to the function, then the shape is a square. Modify your code to deal with this case.
 // 5. Use a template literal to print, “The area is ____ cm^2.”
+
+function areaOfRectangle(length, width){
+    let area = 0;
+    // console.log(typeof width);
+    if(typeof width === "undefined"){
+        area = length * length;
+    }else{
+        area = length * width;
+    }
+    return area;
+}
+
+console.log(`The area is ${areaOfRectangle(4)}cm^2.`);
+
