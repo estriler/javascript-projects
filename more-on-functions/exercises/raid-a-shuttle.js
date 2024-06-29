@@ -21,13 +21,48 @@ function holdStatus(arr){
 let fuelLevel = 200000;
 let cargoHold = ['meal kits', 'space suits', 'first-aid kit', 'satellite', 'gold', 'water', 'AE-35 unit'];
 
+let nonSuspiciousVariable = function(fuelLevel){
+  let stolenFuel = 0;
+  if(fuelLevel > 100000){
+    stolenFuel = fuelLevel - 100000;
+  }else if(fuelLevel >  50000){
+    stolenFuel = fuelLevel - 50000;
+  }
+  return stolenFuel;
+}
+
+let totallyNotSuspiciousVariable = function(array){
+  let stolenGoods = [];
+  if(array.includes("gold")){
+    stolenGoods.push(array.splice(array.indexOf("gold"),1,"expired coupons"));
+  }
+  if(array.includes("AE-35 unit")){
+    stolenGoods.push(array.splice(array.indexOf("gAE-35 unit"),1,"busted Furby"));
+  }
+  return stolenGoods;
+}
+
+function irs(fuelLevel, cargoHold){
+  nonSuspiciousVariable(fuelLevel);
+  let lootArray = totallyNotSuspiciousVariable(cargoHold);
+  console.log(`Raided ${nonSuspiciousVariable(fuelLevel)} kg of fuel from the tanks, and stole ${lootArray[0]} and ${lootArray[1]} from the cargo hold.`)
+}
+
+// nonSuspiciousVariable(fuelLevel);
+// console.log(totallyNotSuspiciousVariable(cargoHold));
+
 console.log("Fuel level: " + checkFuel(fuelLevel));
 console.log("Hold status: " + holdStatus(cargoHold));
+
+irs(fuelLevel, cargoHold);
+
+
 
 /* Steal some fuel from the shuttle:
  */
  
 //a). Define an anonymous function and set it equal to a variable with a normal, non-suspicious name. The function takes one parameter. This will be the fuel level on the shuttle.
+
 
 //b). You must siphon off fuel without alerting the TAs. Inside your function, you want to reduce the fuel level as much as possible WITHOUT changing the color returned by the checkFuel function.
 
