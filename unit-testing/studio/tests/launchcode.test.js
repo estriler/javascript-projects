@@ -53,12 +53,17 @@ describe("Testing launchcode", function(){
 
   it("should return 'Launch Rocks!' when passed a number ONLY divisable by 2 AND 5", function(){
     let result = launchcode.launchOutput(10);
-    expect(result).toBe("Launch Rocks!");
+    expect(result).toBe("Launch Rocks! (CRASH!!!!)");
   });
 
   it("should return 'LaunchCode Rocks!' when passed a number divisable by 2, 3, and 5", function(){
     let result = launchcode.launchOutput(30);
     expect(result).toBe("LaunchCode Rocks!");
+  });
+
+  it("should return 'Rutabagas! That doesn't work.' when passed a number not divisable by 2, 3, or 5", function(){
+    let result = launchcode.launchOutput(1);
+    expect(result).toBe("Rutabagas! That doesn't work.");
   })
 
 
